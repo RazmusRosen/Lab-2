@@ -17,4 +17,6 @@ const projectAssignmentsSchema = new mongoose.Schema({
 })
     
 
-module.exports = mongoose.model('ProjectsAssignments', projectAssignmentsSchema, 'projectAssignments');
+const ProjectAssignments = mongoose.model('ProjectAssignments', projectAssignmentsSchema, 'projectAssignments');
+
+export default ProjectAssignments;

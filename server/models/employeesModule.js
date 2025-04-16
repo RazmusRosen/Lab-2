@@ -21,4 +21,6 @@ const employeesSchema = new mongoose.Schema({
 })
     
 
-module.exports = mongoose.model('Employees', employeesSchema, 'employees');
+const Employees = mongoose.model('Employees', employeesSchema, 'employees');
+
+export default Employees;
