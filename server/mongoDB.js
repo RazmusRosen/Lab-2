@@ -8,16 +8,16 @@ dotenv.config();
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB, {
+      await mongoose.connect(process.env.MONGODB, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        });
-        console.log('MongoDB connected');
+      });
+      console.log('MongoDB connected');
     } catch (error) {
-        console.error('MongoDB connection error:', error);
-        process.exit(1);
+      console.error('MongoDB connection error:', error);
+      process.exit(1);
     }
-    }
+  };
     
     export default connectDB;
 
