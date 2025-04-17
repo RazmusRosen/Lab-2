@@ -5,6 +5,6 @@ import * as scripts from './components/project_assignments.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <scripts.TableStructure />
+    <scripts.FetchProjectAssignments />
   </StrictMode>,
 )
