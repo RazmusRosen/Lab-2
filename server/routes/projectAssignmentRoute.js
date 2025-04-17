@@ -12,4 +12,14 @@ projectAssignmentRoute.get('/api/project_assignments', async (req, res) => {
     }
 })
 
+projectAssignmentRoute.post('/api/project_assignments', async (req, res) => {
+    try {
+        const {employee_id, project_code, start_date} = req.body
+        const result = await mongoDB.insertProjectAssignments({employee_id, project_code, start_date})
+        res.status(201).json(result)
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
 export default projectAssignmentRoute
