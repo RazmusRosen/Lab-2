@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 
 
 const projectAssignmentsSchema = new mongoose.Schema({
-    employee_id: {
+    employee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employees',
         required: true,
     },
-    project_code: {
+    project: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Projects',
         required: true

@@ -22,13 +22,13 @@ const connectDB = async () => {
     export default connectDB;
 
 export async function getProjectAssignments() {
-    const assignments = await ProjectAssignments.find().populate('employee_id project_code').limit(5);
+    const assignments = await ProjectAssignments.find().populate('employee project').limit(5);
     return assignments
 }
 
 export async function insertProjectAssignments(projectAssignment) {
-    const {employee_id, project_code, start_date} = projectAssignment
-    const result = await ProjectAssignments.create({employee_id, project_code, start_date})
+    const {employee, project, start_date} = projectAssignment
+    const result = await ProjectAssignments.create({employee, project, start_date})
     return result
 }
 
