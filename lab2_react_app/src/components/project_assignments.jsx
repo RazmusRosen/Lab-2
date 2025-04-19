@@ -7,7 +7,7 @@ Reference: https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
 
 export function FetchProjectAssignments() {
     const [project_assignments, setProjectAssignments] = useState([]);
-    useEffect(() => {
+    const fetchData = () => {
         fetch('http://localhost:5000/api/project_assignments')
         .then((response) => response.json())
         .then((data) => {
@@ -16,8 +16,21 @@ export function FetchProjectAssignments() {
         .catch((error) => {
             console.error('Error fetching project assignments:', error);
         });
-    }, []);
+    };
 
+    /*
+    For the auto refresh reference: https://codesandbox.io/p/sandbox/auto-refresh-react-js-23f10?file=%2Fsrc%2FApp.js
+    */
+    useEffect(() => {
+        fetchData();
+        const interval = setInterval(() => {
+            console.log("Fetching data...");
+            fetchData();
+        }, 5000);
+        return () => clearInterval(interval);
+    }
+    , []);
+    
     /*
     The sorting is referenced mostly from this video: https://www.youtube.com/watch?v=ran0d8WHTYs
     */
@@ -34,7 +47,7 @@ export function FetchProjectAssignments() {
     }
 
     function getSortedArray(arrayToSort) {
-        const sorted = [...arrayToSort];
+        const sorted = [...arrayToSort]
     
         if(sort.direction === "asc") {
             if(sort.keyToSort === "start_date") {

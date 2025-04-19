@@ -21,8 +21,12 @@ const connectDB = async () => {
     
     export default connectDB;
 
+
+    /*
+    Referenced from https://www.geeksforgeeks.org/how-to-get-the-latest-record-from-mongodb-collection/
+    */
 export async function getProjectAssignments() {
-    const assignments = await ProjectAssignments.find().populate('employee project').limit(5);
+    const assignments = await ProjectAssignments.find().populate('employee project').sort({start_date: -1}).limit(5)
     return assignments
 }
 
