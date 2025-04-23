@@ -1,6 +1,8 @@
 import '../App.css';
 import {useEffect, useState} from 'react';
 
+const PORT = import.meta.env.VITE_PORT //need this syntax for importing env variables in react.
+
 /*
 Reference: https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
 */
@@ -8,7 +10,7 @@ Reference: https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
 export function FetchProjectAssignments() {
     const [project_assignments, setProjectAssignments] = useState([]);
     const fetchData = () => {
-        fetch('http://localhost:5000/api/project_assignments')
+        fetch(`http://localhost:${PORT}/api/project_assignments`)
         .then((response) => response.json())
         .then((data) => {
             setProjectAssignments(data);
