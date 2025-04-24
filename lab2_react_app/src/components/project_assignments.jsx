@@ -27,7 +27,7 @@ export function FetchProjectAssignments() {
         const interval = setInterval(() => {
             console.log("Fetching data...");
             fetchData();
-        }, 5000);
+        }, 60000); //1 minute interval
         return () => clearInterval(interval);
     }
     , []);
