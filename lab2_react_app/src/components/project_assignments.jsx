@@ -1,4 +1,3 @@
-import '../App.css';
 import {useEffect, useState} from 'react';
 
 const PORT = import.meta.env.VITE_PORT //need this syntax for importing env variables in react.
