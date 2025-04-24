@@ -8,11 +8,14 @@ Reference: https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
 
 export function FetchProjectAssignments() {
     const [project_assignments, setProjectAssignments] = useState([]);
+
+    //Fetches the data from the server and sets the state of project_assignments to the data fetched.
     const fetchData = () => {
         fetch(`http://localhost:${PORT}/api/project_assignments`)
         .then((response) => response.json())
         .then((data) => {
-            setProjectAssignments(data);
+            setProjectAssignments(data); //data is an array of objects, each object is a project assignment.
+            console.log(data);
         })
         .catch((error) => {
             console.error('Error fetching project assignments:', error);
@@ -47,8 +50,9 @@ export function FetchProjectAssignments() {
         })
     }
 
+    //Sorts the project assignments array based on the selected column and direction
     function getSortedArray(arrayToSort) {
-        const sorted = [...arrayToSort]
+        const sorted = [...arrayToSort] //Creating a copy of the array for sorting
     
         if(sort.direction === "asc") {
             if(sort.keyToSort === "start_date") {
@@ -98,7 +102,7 @@ export function FetchProjectAssignments() {
                             <td>{assignment.employee.employee_id}</td>
                             <td>{assignment.employee.full_name}</td>
                             <td>{assignment.project.project_name}</td>
-                            <td>{new Date(assignment.start_date).toLocaleDateString('utc')}</td>
+                            <td>{new Date(assignment.start_date).toLocaleDateString()}</td>
                         </tr>
                     ))}
                 </tbody>

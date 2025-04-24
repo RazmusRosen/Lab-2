@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join('../lab2_react_app/dist/index.html'));
 })
 
+//Routes for the API
 app.use('/', employeesRoute);
 app.use('/', projectRoute);
 app.use('/', projectAssignmentRoute);
