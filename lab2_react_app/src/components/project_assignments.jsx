@@ -51,35 +51,34 @@ export function FetchProjectAssignments() {
     }
 
     //Sorts the project assignments array based on the selected column and direction
-    function getSortedArray(arrayToSort) {
-        const sorted = [...arrayToSort] //Creating a copy of the array for sorting
+    function getSortedArray(project_assignments) {
     
         if(sort.direction === "asc") {
             if(sort.keyToSort === "start_date") {
-                return sorted.sort((a, b) => new Date(a[sort.keyToSort]) - new Date(b[sort.keyToSort]));
+                return project_assignments.sort((a, b) => new Date(a[sort.keyToSort]) - new Date(b[sort.keyToSort]));
             }
             if(sort.keyToSort === "employee_id") {
-                return sorted.sort((a, b) => (a.employee.employee_id > b.employee.employee_id ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.employee.employee_id > b.employee.employee_id ? 1 : -1));
             }
             if(sort.keyToSort === "employee_name") {
-                return sorted.sort((a, b) => (a.employee.full_name > b.employee.full_name ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.employee.full_name > b.employee.full_name ? 1 : -1));
             }
             if(sort.keyToSort === "project_name") {
-                return sorted.sort((a, b) => (a.project.project_name > b.project.project_name ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.project.project_name > b.project.project_name ? 1 : -1));
             }
             }
             else {
                 if(sort.keyToSort === "start_date") {
-                    return sorted.sort((a, b) => new Date(b[sort.keyToSort]) - new Date(a[sort.keyToSort]));
+                    return project_assignments.sort((a, b) => new Date(b[sort.keyToSort]) - new Date(a[sort.keyToSort]));
                 }
                 if(sort.keyToSort === "employee_id") {
-                    return sorted.sort((a, b) => (b.employee.employee_id > a.employee.employee_id ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.employee.employee_id > a.employee.employee_id ? 1 : -1));
                 }
                 if(sort.keyToSort === "employee_name") {
-                    return sorted.sort((a, b) => (b.employee.full_name > a.employee.full_name ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.employee.full_name > a.employee.full_name ? 1 : -1));
                 }
                 if(sort.keyToSort === "project_name") {
-                    return sorted.sort((a, b) => (b.project.project_name > a.project.project_name ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.project.project_name > a.project.project_name ? 1 : -1));
                 }
     }
 }
