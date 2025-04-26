@@ -14,8 +14,20 @@ export function FetchProjectAssignments() {
         fetch(`http://localhost:${PORT}/api/project_assignments`)
         .then((response) => response.json())
         .then((data) => {
-            setProjectAssignments(data); //data is an array of objects, each object is a project assignment.
             console.log(data);
+            const fixedData = []
+            data.forEach((assignment) => {
+                const fixedAssignment = {
+                    _id: assignment._id,
+                    employee_id: assignment.employee.employee_id,
+                    employee_name: assignment.employee.full_name,
+                    project_name: assignment.project.project_name,
+                    start_date: assignment.start_date
+                }
+                fixedData.push(fixedAssignment)
+            })
+            setProjectAssignments(fixedData); //data is an array of objects, each object is a project assignment.
+            console.log(fixedData);
         })
         .catch((error) => {
             console.error('Error fetching project assignments:', error);
@@ -58,13 +70,13 @@ export function FetchProjectAssignments() {
                 return project_assignments.sort((a, b) => new Date(a[sort.keyToSort]) - new Date(b[sort.keyToSort]));
             }
             if(sort.keyToSort === "employee_id") {
-                return project_assignments.sort((a, b) => (a.employee.employee_id > b.employee.employee_id ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.employee_id > b.employee_id ? 1 : -1));
             }
             if(sort.keyToSort === "employee_name") {
-                return project_assignments.sort((a, b) => (a.employee.full_name > b.employee.full_name ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.employee_name > b.employee_name ? 1 : -1));
             }
             if(sort.keyToSort === "project_name") {
-                return project_assignments.sort((a, b) => (a.project.project_name > b.project.project_name ? 1 : -1));
+                return project_assignments.sort((a, b) => (a.project_name > b.project_name ? 1 : -1));
             }
             }
             else {
@@ -72,13 +84,13 @@ export function FetchProjectAssignments() {
                     return project_assignments.sort((a, b) => new Date(b[sort.keyToSort]) - new Date(a[sort.keyToSort]));
                 }
                 if(sort.keyToSort === "employee_id") {
-                    return project_assignments.sort((a, b) => (b.employee.employee_id > a.employee.employee_id ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.employee_id > a.employee_id ? 1 : -1));
                 }
                 if(sort.keyToSort === "employee_name") {
-                    return project_assignments.sort((a, b) => (b.employee.full_name > a.employee.full_name ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.employee_name > a.employee_name ? 1 : -1));
                 }
                 if(sort.keyToSort === "project_name") {
-                    return project_assignments.sort((a, b) => (b.project.project_name > a.project.project_name ? 1 : -1));
+                    return project_assignments.sort((a, b) => (b.project_name > a.project_name ? 1 : -1));
                 }
     }
 }
@@ -98,9 +110,9 @@ export function FetchProjectAssignments() {
                 <tbody>
                     {getSortedArray(project_assignments).map((assignment) => (
                         <tr key={assignment._id}>
-                            <td>{assignment.employee.employee_id}</td>
-                            <td>{assignment.employee.full_name}</td>
-                            <td>{assignment.project.project_name}</td>
+                            <td>{assignment.employee_id}</td>
+                            <td>{assignment.employee_name}</td>
+                            <td>{assignment.project_name}</td>
                             <td>{new Date(assignment.start_date).toLocaleDateString()}</td>
                         </tr>
                     ))}
