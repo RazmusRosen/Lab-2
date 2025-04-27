@@ -5,7 +5,10 @@ import projectRoute from './routes/projectsRoute.js';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+/*
+reference for the __dirname and __filename variables:
+https://www.geeksforgeeks.org/how-to-fix-referenceerror-dirname-is-not-defined-in-es-module-scope-in-javascript/
+*/
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

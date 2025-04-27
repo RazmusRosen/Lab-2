@@ -97,7 +97,6 @@ export function FetchProjectAssignments() {
 
     return(
         <div className="App">
-            <h1>Project Assignments</h1>
             <table id="project-assignments-table">
                 <thead>
                     <tr>
