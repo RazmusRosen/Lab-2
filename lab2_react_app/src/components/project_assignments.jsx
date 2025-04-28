@@ -72,6 +72,7 @@ export function FetchProjectAssignments() {
     }
 
 
+    //If you don't see my git commit comment, this was my old way of doing it and so overly complex and the way above is from the referenced video on a much more cleaner way of doing it.
     /* 
         if(sort.direction === "asc") {
             if(sort.keyToSort === "start_date") {
