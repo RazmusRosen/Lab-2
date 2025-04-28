@@ -64,7 +64,15 @@ export function FetchProjectAssignments() {
 
     //Sorts the project assignments array based on the selected column and direction
     function getSortedArray(project_assignments) {
-    
+
+        if(sort.direction === "asc") {
+            return project_assignments.sort((a, b) => a[sort.keyToSort] > b[sort.keyToSort] ? 1 : -1); 
+        }
+        return project_assignments.sort((a, b) => a[sort.keyToSort] > b[sort.keyToSort] ? -1 : 1); 
+    }
+
+
+    /* 
         if(sort.direction === "asc") {
             if(sort.keyToSort === "start_date") {
                 return project_assignments.sort((a, b) => new Date(a[sort.keyToSort]) - new Date(b[sort.keyToSort]));
@@ -92,8 +100,8 @@ export function FetchProjectAssignments() {
                 if(sort.keyToSort === "project_name") {
                     return project_assignments.sort((a, b) => (b.project_name > a.project_name ? 1 : -1));
                 }
-    }
-}
+    } */
+//}
 
     return(
         <div className="App">
