@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../lab2_react_app/dist')));
 
 app.get('/', (req, res) => {
-    res.sendFile("Lab 2/lab2_react_app/dist/index.html", {root: __dirname});
+    res.sendFile("lab2_react_app/dist/index.html");
 })
 
 //Routes for the API
