@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../lab2_react_app/dist')));
 
 app.get('/', (req, res) => {
-    res.sendFile("lab2_react_app/dist/index.html");
-})
+    res.sendFile(path.join(__dirname, '../lab2_react_app/dist/index.html'));
+  });
 
 //Routes for the API
 app.use('/', employeesRoute);
